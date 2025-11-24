@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>About Us - VetConnect</title>
-
+    <title>About - VetConnect</title>
     <style>
-        body {
-            background-image: url('images/dog2.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: white;
-            text-align: center;
-            padding-top: 150px;
-            font-size: 50px;
-            text-shadow: 2px 2px 5px black;
-        }
+        body, html {margin:0;padding:0;height:100%;font-family:Arial,sans-serif;}
+        body {background-image:url('images/dog2.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;color:white;}
+        nav {background-color:rgba(0,0,0,0.8);position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:center;padding:10px 0;}
+        nav a {color:white;text-decoration:none;margin:0 15px;font-weight:bold;padding:10px 15px;border-radius:5px;}
+        nav a:hover {background-color:rgba(255,255,255,0.2);}
+        .content {padding-top:80px;text-align:center;}
+        .content h1 {font-size:60px;margin-top:50px;text-shadow:2px 2px 10px black;}
+        .content p {font-size:20px;margin:20px auto;width:60%;text-shadow:1px 1px 5px black;}
     </style>
 </head>
-
 <body>
-    <h1>About VetConnect</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="view-appointment.html">View Appointment</a>
+        <a href="connect.html">Connect</a>
+        <a href="login.html">Login/Logout</a>
+        <a href="vetshop.html">Vetshop</a>
+    </nav>
+    <div class="content">
+        <h1>About VetConnect</h1>
+        <p>This is the About page. Explain the purpose of your platform here.</p>
+    </div>
 </body>
 </html>
