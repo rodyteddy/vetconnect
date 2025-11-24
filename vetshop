@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VetShop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav> ... same navbar ... </nav>
+
+<div class="container">
+    <h2>VetShop</h2>
+    <p>Find all essential pet products: food, medicine, grooming kits and more.</p>
+</div>
+
+</body>
+</html>
