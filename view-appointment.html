@@ -2,229 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Appointments – VetConnect</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", Arial, sans-serif;
-            background: #f7f9fc;
-        }
-
-        /* Navbar */
-        nav {
-            background: #2c3e50;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
-
-        /* Title */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .header h1 {
-            font-size: 32px;
-            color: #2c3e50;
-        }
-
-        /* Table Container */
-        .table-container {
-            max-width: 1000px;
-            margin: 20px auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 15px;
-        }
-
-        th, td {
-            padding: 14px 12px;
-            text-align: left;
-        }
-
-        th {
-            background: #1abc9c;
-            color: white;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        tr:nth-child(even) {
-            background: #f1fdfb;
-        }
-
-        tr:nth-child(odd) {
-            background: #ffffff;
-        }
-
-        tr:hover {
-            background: #e0faf4;
-        }
-
-        td {
-            color: #444;
-        }
-
-        /* Button Style */
-        .delete-btn {
-            background: #e74c3c;
-            color: white;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .delete-btn:hover {
-            background: #c0392b;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 40px;
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 12px 0;
-            font-size: 14px;
-        }
-
-        /* Responsive */
-        @media (max-width: 700px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                padding: 12px;
-                border-bottom: 1px solid #ddd;
-            }
-
-            td::before {
-                content: attr(data-label);
-                font-weight: bold;
-                display: block;
-                color: #2c3e50;
-                margin-bottom: 5px;
-            }
-        }
-    </style>
+    <title>View Appointments</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">VetConnect</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="appointment.html">Appointment</a></li>
-            <li><a href="view-appointment.html" style="color:#1abc9c;">View Appointments</a></li>
-            <li><a href="vets.html">Vets</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header -->
-    <div class="header">
-        <h1>Your Appointments</h1>
-        <p>All upcoming appointments are listed below.</p>
+<nav class="navbar">
+    <div class="logo">VetConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="view-appointment.html">View Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="connect.html">Connect</a></li>
+        <li><a href="vetshop.html">PetShop</a></li>
+    </ul>
+    <div class="auth-links">
+        <a href="login.html" class="login">Login</a>
+        <a href="logout.html" class="logout">Logout</a>
     </div>
+</nav>
 
-    <!-- Appointment Table -->
-    <div class="table-container">
+<h2 style="text-align:center; margin-top:40px;">Your Appointments</h2>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Owner</th>
-                    <th>Pet</th>
-                    <th>Type</th>
-                    <th>Phone</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Reason</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <!-- Example row -->
-                <!-- Replace this with your PHP code -->
-                <!-- 
-                <?php
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>
-                                <td>{$row['ownerName']}</td>
-                                <td>{$row['petName']}</td>
-                                <td>{$row['petType']}</td>
-                                <td>{$row['phone']}</td>
-                                <td>{$row['date']}</td>
-                                <td>{$row['time']}</td>
-                                <td>{$row['reason']}</td>
-                                <td><a class='delete-btn' href='delete.php?id={$row['id']}'>Delete</a></td>
-                              </tr>";
-                    }
-                ?>
-                -->
-
-                <tr>
-                    <td data-label="Owner">Example Owner</td>
-                    <td data-label="Pet">Bella</td>
-                    <td data-label="Type">Cat</td>
-                    <td data-label="Phone">03 111 222</td>
-                    <td data-label="Date">2025-01-01</td>
-                    <td data-label="Time">10:00</td>
-                    <td data-label="Reason">Check-up</td>
-                    <td data-label="Action"><a class="delete-btn" href="#">Delete</a></td>
-                </tr>
-
-            </tbody>
-        </table>
-
-    </div>
-
-    <footer>
-        © 2025 VetConnect — All Rights Reserved
-    </footer>
-
+<footer>© 2025 VetConnect</footer>
 </body>
 </html>
