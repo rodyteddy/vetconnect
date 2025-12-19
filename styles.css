@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: "Poppins", Arial, sans-serif;
-    background: #f7f9fc;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
 }
 
 .navbar {
@@ -21,7 +21,9 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -35,14 +37,57 @@ body {
 
 .auth-links a {
     margin-left: 10px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 6px;
     color: white;
+    text-decoration: none;
 }
 
 .login { background: #1abc9c; }
 .logout { background: #e74c3c; }
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+}
+
+.hero {
+    background: linear-gradient(to right, #1abc9c, #16a085);
+    color: white;
+    padding: 70px;
+    text-align: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.shop-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background: #1abc9c;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
 
 footer {
     background: #2c3e50;
@@ -50,27 +95,4 @@ footer {
     text-align: center;
     padding: 12px;
     margin-top: 40px;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 6px 0 15px;
-}
-
-button {
-    padding: 10px 15px;
-    background: #1abc9c;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
 }
