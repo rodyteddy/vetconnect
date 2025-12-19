@@ -25,7 +25,7 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 #cartSidebar {
   position: fixed;
   top: 0;
-  right: -350px; /* Hidden initially */
+  right: -350px; 
   width: 350px;
   height: 100%;
   background:#fff;
@@ -37,7 +37,7 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 }
 #cartSidebar.active { right:0; }
 #cartSidebar h2 { margin-top:0; color:#1abc9c; text-align:center; }
-.cart-item { display:flex; justify-content:space-between; margin-bottom:10px; }
+.cart-item { display:flex; justify-content:space-between; margin-bottom:10px; align-items:center; }
 .cart-item span { font-weight:500; }
 .cart-total { font-size:18px; font-weight:bold; margin-top:15px; text-align:right; }
 .delete-btn { background:#e74c3c; border:none; color:white; padding:4px 8px; border-radius:5px; cursor:pointer; }
@@ -133,8 +133,8 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 </footer>
 
 <script>
-window.onload = function() {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+document.addEventListener('DOMContentLoaded', function() {
+  let cart = [];
 
   const cartSidebar = document.getElementById('cartSidebar');
   const cartToggle = document.getElementById('cartToggle');
@@ -142,17 +142,16 @@ window.onload = function() {
   const cartTotalDiv = document.getElementById('cartTotal');
 
   function renderCart() {
-    if(cart.length === 0) {
-      cartSidebar.classList.remove('active');
+    cartItemsDiv.innerHTML = '';
+    let total = 0;
+
+    if(cart.length === 0){
       cartItemsDiv.innerHTML = '<p>No items in cart.</p>';
       cartTotalDiv.innerHTML = '';
       return;
     }
 
-    cartSidebar.classList.add('active');
-    cartItemsDiv.innerHTML = '';
-    let total = 0;
-    cart.forEach((item,index) => {
+    cart.forEach((item, index) => {
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `
@@ -162,24 +161,25 @@ window.onload = function() {
       total += item.price;
       cartItemsDiv.appendChild(div);
     });
+
     cartTotalDiv.innerHTML = Total: $${total.toFixed(2)};
 
     document.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const i = this.getAttribute('data-index');
-        cart.splice(i,1);
-        localStorage.setItem('cart', JSON.stringify(cart));
+      btn.addEventListener('click', function(){
+        const i = parseInt(this.getAttribute('data-index'));
+        cart.splice(i, 1);
         renderCart();
       });
     });
+
+    cartSidebar.classList.add('active');
   }
 
   document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const name = this.getAttribute('data-name');
       const price = parseFloat(this.getAttribute('data-price'));
-      cart.push({name,price});
-      localStorage.setItem('cart', JSON.stringify(cart));
+      cart.push({name, price});
       renderCart();
     });
   });
@@ -187,9 +187,7 @@ window.onload = function() {
   cartToggle.addEventListener('click', () => {
     cartSidebar.classList.toggle('active');
   });
-
-  renderCart();
-}
+});
 </script>
 </body>
 </html>
