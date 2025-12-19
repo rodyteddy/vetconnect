@@ -1,198 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About – VetConnect</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7f9fc;
-            color: #333;
-        }
-
-        /* Header / Navbar */
-        nav {
-            background: #2c3e50;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
-
-        /* Main Section */
-        .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .about-box {
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        h2 {
-            color: #1abc9c;
-            margin-top: 40px;
-        }
-
-        p {
-            line-height: 1.7;
-            font-size: 17px;
-        }
-
-        /* Services Section */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .service-card {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-            border-left: 5px solid #1abc9c;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-
-        .service-card p {
-            margin: 10px 0 0;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 40px;
-            background: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 14px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">VetConnect</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="appointment.html">Appointment</a></li>
-            <!--<li><a href="vets.html">Vets</a></li> -->
-            <li><a href="about.html" style="color:#1abc9c;">About Us</a></li>
-            <li><a href="connect.html">Connect</a></li>
-            <!--<li><a href="video.html">Video Consultation</a></li>
-            <li><a href="chatbot.html">AI Chatbot</a></li> -->
-        </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="about-box">
-
-            <h1>About VetConnect</h1>
-
-            <p>
-                VetConnect was created with one purpose in mind: to make pet care simple, accessible, 
-                and stress-free. We aim to bridge the gap between pet owners and veterinarians by offering 
-                an easy-to-use platform for booking appointments, accessing professional help, and managing 
-                your pet’s health all in one place.
-            </p>
-
-            <h2>Our Mission</h2>
-            <p>
-                Our mission is to modernize the veterinary experience by providing digital tools that save 
-                time, reduce hassle, and ensure pets get the care they deserve. Whether it's scheduling a 
-                visit, consulting a vet online, or browsing trusted vets near you – VetConnect brings 
-                everything together.
-            </p>
-
-            <h2>What We Provide</h2>
-
-            <div class="services">
-                <div class="service-card">
-                    <h3>✔ Appointment Booking</h3>
-                    <p>Book vet appointments in seconds with our easy and intuitive interface.</p>
-                </div>
-
-                <div class="service-card">
-                    <h3>✔ Vet Directory</h3>
-                    <p>Explore a list of verified veterinarians with details, ratings, and specialties.</p>
-                </div>
-
-                <div class="service-card">
-                    <h3>✔ Online Video Consultations</h3>
-                    <p>Consult with professionals from home for minor health concerns or quick advice.</p>
-                </div>
-
-                <div class="service-card">
-                    <h3>✔ AI Chatbot Assistant</h3>
-                    <p>Get instant help, answers, and basic guidance using our smart chatbot.</p>
-                </div>
-
-                <div class="service-card">
-                    <h3>✔ Appointment Management</h3>
-                    <p>View, edit, or cancel your appointments instantly through your dashboard.</p>
-                </div>
-
-                <div class="service-card">
-                    <h3>✔ Pet Health Records (Coming Soon)</h3>
-                    <p>Store and manage your pet’s medical history securely in one place.</p>
-                </div>
-            </div>
-
-        </div>
+<nav class="navbar">
+    <div class="logo">VetConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="view-appointment.html">View Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="connect.html">Connect</a></li>
+        <li><a href="vetshop.html">PetShop</a></li>
+    </ul>
+    <div class="auth-links">
+        <a href="login.html" class="login">Login</a>
+        <a href="logout.html" class="logout">Logout</a>
     </div>
+</nav>
 
-    <footer>
-        © 2025 VetConnect — All Rights Reserved
-    </footer>
+<h2 style="text-align:center; margin-top:40px;">About VetConnect</h2>
 
+<footer>© 2025 VetConnect</footer>
 </body>
 </html>
