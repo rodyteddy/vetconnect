@@ -12,12 +12,15 @@ body { margin:0; font-family:Arial, sans-serif; background:#f7f9fc; }
 .navbar ul li a { color:#fff; text-decoration:none; font-weight:500; }
 .navbar ul li a:hover { text-decoration:underline; }
 header { text-align:center; padding:20px; font-size:28px; color:#fff; background:#6c5ce7; }
-.cart-container { width:90%; max-width:800px; margin:40px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-.cart-item { display:flex; justify-content:space-between; margin-bottom:10px; align-items:center; }
-.cart-item span { font-weight:500; }
-.delete-btn { background:#e74c3c; border:none; color:white; padding:4px 8px; border-radius:5px; cursor:pointer; }
-.delete-btn:hover { background:#c0392b; }
-.cart-total { font-size:20px; font-weight:bold; margin-top:15px; text-align:right; }
+.cart-container { width:90%; max-width:900px; margin:30px auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+.cart-item { display:flex; align-items:center; gap:15px; padding:10px 0; border-bottom:1px solid #ddd; }
+.cart-item img { width:80px; height:80px; object-fit:contain; border-radius:8px; }
+.cart-item h3 { margin:0; font-size:18px; flex:1; }
+.cart-item p { margin:0 15px; font-weight:bold; color:#6c5ce7; }
+.cart-item button { background:#e74c3c; color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer; }
+.cart-item button:hover { background:#c0392b; }
+.total { text-align:right; margin-top:20px; font-size:20px; font-weight:bold; color:#6c5ce7; }
+.empty { text-align:center; margin:50px 0; font-size:22px; color:#999; }
 footer { text-align:center; padding:15px; background:#1abc9c; color:white; margin-top:30px; }
 </style>
 </head>
@@ -48,41 +51,58 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const container = document.getElementById('cartContainer');
+// Mapping product names to image paths
+const productImages = {
+  "Premium Dog Food": "images/premiumdogfood.jpeg",
+  "Healthy Cat Food": "images/healthycatfood.jpeg",
+  "Durable Pet Leash": "images/durablepetleash.jpeg",
+  "Interactive Pet Toys": "images/interactivepettoys.jpeg",
+  "Soothing Pet Shampoo": "images/soothingpetshampoo.jpeg",
+  "Soft Pet Bed": "images/softpetbed.jpeg"
+};
 
-  function renderCart() {
-    container.innerHTML = '';
-    if(cart.length === 0){
-      container.innerHTML = '<p>Your cart is empty.</p>';
-      return;
-    }
-    let total = 0;
-    cart.forEach((item,index)=>{
-      const div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = <span>${item.name} - $${item.price.toFixed(2)}</span> <button class="delete-btn" data-index="${index}">X</button>;
-      container.appendChild(div);
-      total += item.price;
-    });
-    const totalDiv = document.createElement('div');
-    totalDiv.className = 'cart-total';
-    totalDiv.innerHTML = Total: $${total.toFixed(2)};
-    container.appendChild(totalDiv);
+// Load cart from localStorage
+function loadCart() {
+  const cartContainer = document.getElementById('cartContainer');
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cartContainer.innerHTML = '';
 
-    document.querySelectorAll('.delete-btn').forEach(btn=>{
-      btn.onclick = () => {
-        const i = parseInt(btn.getAttribute('data-index'));
-        cart.splice(i,1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        renderCart();
-      }
-    });
+  if(cart.length === 0){
+    cartContainer.innerHTML = '<p class="empty">Your cart is empty.</p>';
+    return;
   }
 
-  renderCart();
-});
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <img src="${productImages[item.name]}" alt="${item.name}">
+      <h3>${item.name}</h3>
+      <p>$${item.price.toFixed(2)}</p>
+      <button onclick="removeItem(${index})">Remove</button>
+    `;
+    cartContainer.appendChild(div);
+  });
+
+  const totalDiv = document.createElement('div');
+  totalDiv.className = 'total';
+  totalDiv.innerText = 'Total: $' + total.toFixed(2);
+  cartContainer.appendChild(totalDiv);
+}
+
+// Remove item from cart
+function removeItem(index) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  loadCart();
+}
+
+// Initialize cart
+document.addEventListener('DOMContentLoaded', loadCart);
 </script>
 
 </body>
