@@ -1,44 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>View Appointments</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+.card {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+</style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
-  <div class="logo">VetConnect</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="appointment.html">Appointment</a></li>
-    <li><a href="view-appointment.html">View Appointment</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="connect.html">Connect</a></li>
-    <li><a href="vetshop.html">PetShop</a></li>
-  </ul>
-  <div class="auth-links">
-    <a href="login.html" class="login">Login</a>
-    <a href="logout.html" class="logout">Logout</a>
-  </div>
+    <div class="logo">VetConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="view-appointment.html" style="color:#1abc9c;">View Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="connect.html">Connect</a></li>
+        <li><a href="vetshop.html">PetShop</a></li>
+    </ul>
+    <div class="auth-links">
+        <a href="login.html" class="login">Login</a>
+        <a href="logout.html" class="logout">Logout</a>
+    </div>
 </nav>
 
 <div class="container">
-<h2>Saved Appointments</h2>
-<ul id="list"></ul>
+<h1>Saved Appointments</h1>
+<div id="appointments"></div>
 </div>
 
 <script>
-let data = JSON.parse(localStorage.getItem("appointments")) || [];
-data.forEach(a => {
-  list.innerHTML += `
-  <li>
-    <strong>${a.name ? a.name : 'No Name'}</strong><br>
-    Pet: ${a.pet} | Time: ${a.time}<br>
-    Phone: ${a.phone}
-  </li>`;
+// Retrieve appointments from localStorage
+let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+const container = document.getElementById('appointments');
+
+appointments.forEach(app => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `
+        <h3>${app.name}</h3>
+        <p><strong>Pet Type:</strong> ${app.petType}</p>
+        <p><strong>Date & Time:</strong> ${app.dateTime}</p>
+        <p><strong>Phone:</strong> ${app.phone}</p>
+    `;
+    container.appendChild(div);
 });
 </script>
 
-<footer>© 2025 VetConnect</footer>
+<footer>©️ 2025 VetConnect — All Rights Reserved</footer>
 </body>
 </html>
