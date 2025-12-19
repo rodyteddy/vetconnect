@@ -6,37 +6,37 @@
 </head>
 <body>
 
-<nav class="navbar">…same navbar…</nav>
+<nav class="navbar">...FULL NAVBAR SAME AS HOME...</nav>
 
 <div class="container">
-<h2>Make Appointment</h2>
+<h2>Make an Appointment</h2>
 
 <input id="name" placeholder="Full Name">
 <input id="email" placeholder="Email">
 <input id="phone" placeholder="Phone">
 <input id="address" placeholder="Address">
 <select id="pet">
-    <option>Dog</option>
-    <option>Cat</option>
+<option>Dog</option>
+<option>Cat</option>
 </select>
 <input type="datetime-local" id="time">
 
-<button onclick="save()">Make Appointment</button>
+<button onclick="saveAppointment()">Make Appointment</button>
 </div>
 
 <script>
-function save() {
-    let data = JSON.parse(localStorage.getItem("appointments")) || [];
-    data.push({
-        name: name.value,
-        email: email.value,
-        phone: phone.value,
-        address: address.value,
-        pet: pet.value,
-        time: time.value
-    });
-    localStorage.setItem("appointments", JSON.stringify(data));
-    alert("Appointment saved!");
+function saveAppointment() {
+let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+appointments.push({
+name: name.value,
+email: email.value,
+phone: phone.value,
+address: address.value,
+pet: pet.value,
+time: time.value
+});
+localStorage.setItem("appointments", JSON.stringify(appointments));
+alert("Appointment successfully saved!");
 }
 </script>
 
