@@ -2,204 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect – VetConnect</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", Arial, sans-serif;
-            background: #f7f9fc;
-        }
-
-        /* Navbar */
-        nav {
-            background: #2c3e50;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .header h1 {
-            font-size: 32px;
-            color: #2c3e50;
-        }
-
-        .header p {
-            color: #555;
-            margin-top: 5px;
-        }
-
-        /* Form Box */
-        .form-container {
-            max-width: 700px;
-            margin: 20px auto 60px auto;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-size: 15px;
-            color: #444;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid #dcdcdc;
-            border-radius: 12px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            border-color: #1abc9c;
-            box-shadow: 0px 0px 6px rgba(26, 188, 156, 0.3);
-        }
-
-        textarea {
-            resize: none;
-            height: 110px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: #1abc9c;
-            border: none;
-            color: #fff;
-            font-size: 17px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #17a589;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 40px;
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 12px 0;
-            font-size: 14px;
-        }
-    </style>
+    <title>Connect</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">VetConnect</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="appointment.html">Appointment</a></li>
-            <li><a href="view-appointment.html">View Appointments</a></li>
-            <li><a href="connect.html" style="color:#1abc9c;">Connect</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header -->
-    <div class="header">
-        <h1>Owner Information</h1>
-        <p>Please fill in your details to connect with VetConnect</p>
+<nav class="navbar">
+    <div class="logo">VetConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="view-appointment.html">View Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="connect.html">Connect</a></li>
+        <li><a href="vetshop.html">PetShop</a></li>
+    </ul>
+    <div class="auth-links">
+        <a href="login.html" class="login">Login</a>
+        <a href="logout.html" class="logout">Logout</a>
     </div>
+</nav>
 
-    <!-- Owner Information Form -->
-    <div class="form-container">
-        <form action="submit_owner.php" method="POST">
+<h2 style="text-align:center; margin-top:40px;">Connect With Us</h2>
 
-            <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" placeholder="03 123 456" required>
-            </div>
-
-            <div class="form-group">
-                <label for="address">Home Address</label>
-                <input type="text" id="address" name="address" placeholder="Street, Building, Floor" required>
-            </div>
-
-            <div class="form-group">
-                <label for="city">City / Region</label>
-                <input type="text" id="city" name="city" placeholder="Beirut, Jounieh, Tripoli..." required>
-            </div>
-
-            <div class="form-group">
-                <label for="pets">Do you own any pets?</label>
-                <select id="pets" name="pets" required>
-                    <option value="">Select</option>
-                    <option>Yes, one</option>
-                    <option>Yes, more than one</option>
-                    <option>No pets</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="extra">Additional Notes (optional)</label>
-                <textarea id="extra" name="extra" placeholder="Anything we should know? Allergies, special needs..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Save Information</button>
-
-        </form>
-    </div>
-
-    <footer>
-        © 2025 VetConnect — All Rights Reserved
-    </footer>
-
+<footer>© 2025 VetConnect</footer>
 </body>
 </html>
