@@ -1,29 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Appointment</title>
-    <link rel="stylesheet" href="styles.css">
+<title>Appointment</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo">VetConnect</div>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="appointment.html">Appointment</a></li>
-        <li><a href="view-appointment.html">View Appointment</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="connect.html">Connect</a></li>
-        <li><a href="vetshop.html">PetShop</a></li>
-    </ul>
-    <div class="auth-links">
-        <a href="login.html" class="login">Login</a>
-        <a href="logout.html" class="logout">Logout</a>
-    </div>
-</nav>
+<nav class="navbar">…same navbar…</nav>
 
-<h2 style="text-align:center; margin-top:40px;">Book an Appointment</h2>
+<div class="container">
+<h2>Make Appointment</h2>
+
+<input id="name" placeholder="Full Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+<input id="address" placeholder="Address">
+<select id="pet">
+    <option>Dog</option>
+    <option>Cat</option>
+</select>
+<input type="datetime-local" id="time">
+
+<button onclick="save()">Make Appointment</button>
+</div>
+
+<script>
+function save() {
+    let data = JSON.parse(localStorage.getItem("appointments")) || [];
+    data.push({
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        address: address.value,
+        pet: pet.value,
+        time: time.value
+    });
+    localStorage.setItem("appointments", JSON.stringify(data));
+    alert("Appointment saved!");
+}
+</script>
 
 <footer>© 2025 VetConnect</footer>
 </body>
