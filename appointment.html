@@ -1,206 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Appointment – VetConnect</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", Arial, sans-serif;
-            background: #fdfdfd;
-        }
-
-        /* Navbar */
-        nav {
-            background: #2c3e50;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
-
-        /* Page title */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .header h1 {
-            font-size: 34px;
-            color: #2c3e50;
-        }
-
-        .header p {
-            color: #555;
-            font-size: 16px;
-        }
-
-        /* Appointment Form */
-        .form-container {
-            max-width: 700px;
-            margin: auto;
-            background: #ffffff;
-            padding: 35px 40px;
-            border-radius: 20px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-size: 15px;
-            color: #444;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid #dcdcdc;
-            border-radius: 12px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: #1abc9c;
-            box-shadow: 0px 0px 6px rgba(26,188,156,0.3);
-        }
-
-        textarea {
-            resize: none;
-            height: 110px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: #1abc9c;
-            border: none;
-            color: white;
-            font-size: 17px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #17a589;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            background: #2c3e50;
-            color: white;
-            padding: 12px 0;
-            font-size: 14px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Appointment</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">VetConnect</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="appointment.html" style="color:#1abc9c;">Appointment</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="connect.html">Connect</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header -->
-    <div class="header">
-        <h1>Book an Appointment</h1>
-        <p>Fill in the details below and we will schedule your visit with the best care.</p>
+<nav class="navbar">
+    <div class="logo">VetConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="view-appointment.html">View Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="connect.html">Connect</a></li>
+        <li><a href="vetshop.html">PetShop</a></li>
+    </ul>
+    <div class="auth-links">
+        <a href="login.html" class="login">Login</a>
+        <a href="logout.html" class="logout">Logout</a>
     </div>
+</nav>
 
-    <!-- Appointment Form -->
-    <div class="form-container">
-        <form action="submit_appointment.php" method="POST">
+<h2 style="text-align:center; margin-top:40px;">Book an Appointment</h2>
 
-            <div class="form-group">
-                <label for="ownerName">Your Name</label>
-                <input type="text" id="ownerName" name="ownerName" placeholder="Enter your full name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="petName">Pet Name</label>
-                <input type="text" id="petName" name="petName" placeholder="Your pet’s name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="petType">Pet Type</label>
-                <select id="petType" name="petType" required>
-                    <option value="">Select</option>
-                    <option>Dog</option>
-                    <option>Cat</option>
-                    <option>Bird</option>
-                    <option>Rabbit</option>
-                    <option>Reptile</option>
-                    <option>Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" placeholder="03 123 456" required>
-            </div>
-
-            <div class="form-group">
-                <label for="date">Preferred Date</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-
-            <div class="form-group">
-                <label for="time">Preferred Time</label>
-                <input type="time" id="time" name="time" required>
-            </div>
-
-            <div class="form-group">
-                <label for="reason">Reason for Visit</label>
-                <textarea id="reason" name="reason" placeholder="Describe the issue or purpose..." required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Book Appointment</button>
-        </form>
-    </div>
-
-    <footer>
-        © 2025 VetConnect — All Rights Reserved
-    </footer>
-
+<footer>© 2025 VetConnect</footer>
 </body>
 </html>
