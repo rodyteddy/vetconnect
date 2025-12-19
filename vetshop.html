@@ -20,16 +20,6 @@ header { text-align:center; padding:20px; font-size:28px; color:#fff; background
 .btn { background:#6c5ce7; color:white; padding:10px 14px; text-decoration:none; border-radius:8px; cursor:pointer; transition:0.3s; border:none; }
 .btn:hover { background:#5a4bd6; }
 footer { text-align:center; padding:15px; background:#1abc9c; color:white; margin-top:30px; }
-#cartSidebar { position:fixed; top:0; right:-350px; width:350px; height:100%; background:#fff; box-shadow:-3px 0 15px rgba(0,0,0,0.2); transition:0.3s; padding:20px; overflow-y:auto; z-index:1000; }
-#cartSidebar.active { right:0; }
-#cartSidebar h2 { margin-top:0; color:#1abc9c; text-align:center; }
-.cart-item { display:flex; justify-content:space-between; margin-bottom:10px; align-items:center; }
-.cart-item span { font-weight:500; }
-.cart-total { font-size:18px; font-weight:bold; margin-top:15px; text-align:right; }
-.delete-btn { background:#e74c3c; border:none; color:white; padding:4px 8px; border-radius:5px; cursor:pointer; }
-.delete-btn:hover { background:#c0392b; }
-#cartToggle { position: fixed; top:50%; right:0; transform: translateY(-50%); background:#6c5ce7; color:white; padding:10px 12px; border-radius:8px 0 0 8px; cursor:pointer; z-index:1100; }
-#cartToggle:hover { background:#5a4bd6; }
 </style>
 </head>
 <body>
@@ -90,67 +80,22 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
   </div>
 </div>
 
-<!-- Cart Sidebar -->
-<div id="cartSidebar">
-  <h2>Your Cart</h2>
-  <div id="cartItems"></div>
-  <div class="cart-total" id="cartTotal"></div>
-</div>
-<div id="cartToggle">🛒 Cart</div>
-
 <footer>
 ©️ 2025 VetConnect — Caring for pets with love
 </footer>
 
 <script>
-// Wait until all elements are loaded
 document.addEventListener('DOMContentLoaded', () => {
-  const cart = [];
-  const cartItemsDiv = document.getElementById('cartItems');
-  const cartTotalDiv = document.getElementById('cartTotal');
-  const cartSidebar = document.getElementById('cartSidebar');
-  const cartToggle = document.getElementById('cartToggle');
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  function renderCart() {
-    cartItemsDiv.innerHTML = '';
-    let total = 0;
-    if(cart.length === 0){
-      cartItemsDiv.innerHTML = '<p>No items in cart.</p>';
-      cartTotalDiv.innerHTML = '';
-      return;
-    }
-    cart.forEach((item,index)=>{
-      const div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = <span>${item.name} - $${item.price.toFixed(2)}</span> <button class="delete-btn" data-index="${index}">X</button>;
-      cartItemsDiv.appendChild(div);
-      total += item.price;
-    });
-    cartTotalDiv.innerHTML = Total: $${total.toFixed(2)};
-
-    // Add delete functionality
-    document.querySelectorAll('.delete-btn').forEach(btn=>{
-      btn.onclick = () => {
-        const i = parseInt(btn.getAttribute('data-index'));
-        cart.splice(i,1);
-        renderCart();
-      }
-    });
-  }
-
-  // Add to Cart button
   document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const name = btn.getAttribute('data-name');
       const price = parseFloat(btn.getAttribute('data-price'));
-      cart.push({name,price});
-      renderCart();
-      cartSidebar.classList.add('active'); // Open sidebar automatically
+      cart.push({name, price});
+      localStorage.setItem('cart', JSON.stringify(cart));
+      window.location.href = 'cart.html'; // Redirect to cart page
     });
-  });
-
-  cartToggle.addEventListener('click', () => {
-    cartSidebar.classList.toggle('active');
   });
 });
 </script>
