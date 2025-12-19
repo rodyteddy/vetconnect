@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>View Appointments</title>
-    <link rel="stylesheet" href="styles.css">
+<title>View Appointment</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo">VetConnect</div>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="appointment.html">Appointment</a></li>
-        <li><a href="view-appointment.html">View Appointment</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="connect.html">Connect</a></li>
-        <li><a href="vetshop.html">PetShop</a></li>
-    </ul>
-    <div class="auth-links">
-        <a href="login.html" class="login">Login</a>
-        <a href="logout.html" class="logout">Logout</a>
-    </div>
-</nav>
+<nav class="navbar">…same navbar…</nav>
 
-<h2 style="text-align:center; margin-top:40px;">Your Appointments</h2>
+<div class="container">
+<h2>Saved Appointments</h2>
+<ul id="list"></ul>
+</div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+data.forEach(a=>{
+    list.innerHTML += <li>${a.name} | ${a.pet} | ${a.time}</li>;
+});
+</script>
 
 <footer>© 2025 VetConnect</footer>
 </body>
