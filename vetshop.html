@@ -6,28 +6,31 @@
 </head>
 <body>
 
-<nav class="navbar">…same navbar…</nav>
+<nav class="navbar">...FULL NAVBAR...</nav>
 
 <div class="container">
 <h2>Pet Shop</h2>
 
-<div>
-<img src="images/premiumdogfood.jpeg" width="150">
-<button onclick="add('Dog Food',20)">Add $20</button>
+<div class="cards">
+<div class="card shop-item">
+<img src="images/premiumdogfood.jpg">
+<button onclick="add('Premium Dog Food',25)">Add $25</button>
 </div>
 
-<div>
-<img src="images/healthycatfood.jpeg" width="150">
-<button onclick="add('Cat Food',15)">Add $15</button>
+<div class="card shop-item">
+<img src="images/healthycatfood.jpg">
+<button onclick="add('Healthy Cat Food',20)">Add $20</button>
+</div>
 </div>
 
+<h3>Cart</h3>
 <ul id="cart"></ul>
-<h3>Total: $<span id="total">0</span></h3>
+<p>Total: $<span id="total">0</span></p>
 </div>
 
 <script>
 let total = 0;
-function add(name,price){
+function add(name, price) {
 cart.innerHTML += <li>${name} - $${price}</li>;
 total += price;
 document.getElementById("total").innerText = total;
