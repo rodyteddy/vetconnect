@@ -1,53 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>PetShop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VetConnect - Pet Shop</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.card button {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background: #5a4bd6;
+}
+
+#cart {
+    list-style: none;
+    padding-left: 0;
+}
+
+#cart li {
+    background: #f1f1f1;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+</style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
-  <div class="logo">VetConnect</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="appointment.html">Appointment</a></li>
-    <li><a href="view-appointment.html">View Appointment</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="connect.html">Connect</a></li>
-    <li><a href="vetshop.html">PetShop</a></li>
-  </ul>
-  <div class="auth-links">
-    <a href="login.html" class="login">Login</a>
-    <a href="logout.html" class="logout">Logout</a>
-  </div>
+    <div class="logo">VetConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="view-appointment.html">View Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="connect.html">Connect</a></li>
+        <li><a href="vetshop.html" style="color:#1abc9c;">PetShop</a></li>
+    </ul>
+    <div class="auth-links">
+        <a href="login.html" class="login">Login</a>
+        <a href="logout.html" class="logout">Logout</a>
+    </div>
 </nav>
 
 <div class="container">
-<h2>Pet Shop</h2>
-
+<h1>Pet Shop</h1>
 <div class="cards">
 
-<div class="card shop-item">
-<img src="images/premiumdogfood.jpg">
-<p>Premium Dog Food - $25</p>
+<div class="card">
+<img src="images/premiumdogfood.jpg" alt="Premium Dog Food">
+<h3>Premium Dog Food</h3>
+<p>$25</p>
 <button onclick="addToCart('Premium Dog Food',25)">Add to Cart</button>
 </div>
 
-<div class="card shop-item">
-<img src="images/healthycatfood.jpg">
-<p>Healthy Cat Food - $20</p>
+<div class="card">
+<img src="images/healthycatfood.jpg" alt="Healthy Cat Food">
+<h3>Healthy Cat Food</h3>
+<p>$20</p>
 <button onclick="addToCart('Healthy Cat Food',20)">Add to Cart</button>
 </div>
 
-<div class="card shop-item">
-<img src="images/interactivepettoy.jpg">
-<p>Interactive Pet Toy - $12</p>
+<div class="card">
+<img src="images/interactivepettoy.jpg" alt="Interactive Pet Toy">
+<h3>Interactive Pet Toy</h3>
+<p>$12</p>
 <button onclick="addToCart('Interactive Pet Toy',12)">Add to Cart</button>
 </div>
 
+<div class="card">
+<img src="images/durablepetleash.jpg" alt="Durable Pet Leash">
+<h3>Durable Pet Leash</h3>
+<p>$10</p>
+<button onclick="addToCart('Durable Pet Leash',10)">Add to Cart</button>
 </div>
 
-<h3>Cart</h3>
+<div class="card">
+<img src="images/soothingpetshampoo.jpg" alt="Soothing Pet Shampoo">
+<h3>Soothing Pet Shampoo</h3>
+<p>$8</p>
+<button onclick="addToCart('Soothing Pet Shampoo',8)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="images/softpetbed.jpg" alt="Soft Pet Bed">
+<h3>Soft Pet Bed</h3>
+<p>$30</p>
+<button onclick="addToCart('Soft Pet Bed',30)">Add to Cart</button>
+</div>
+
+</div>
+
+<h2>Cart</h2>
 <ul id="cart"></ul>
 <p><strong>Total: $<span id="total">0</span></strong></p>
 </div>
@@ -55,14 +136,14 @@
 <script>
 let total = 0;
 function addToCart(name, price) {
-  const li = document.createElement("li");
-  li.textContent = ${name} - $${price};
-  document.getElementById("cart").appendChild(li);
-  total += price;
-  document.getElementById("total").innerText = total;
+    const li = document.createElement("li");
+    li.textContent = ${name} - $${price};
+    document.getElementById("cart").appendChild(li);
+    total += price;
+    document.getElementById("total").innerText = total;
 }
 </script>
 
-<footer>© 2025 VetConnect</footer>
+<footer>©️ 2025 VetConnect — All Rights Reserved</footer>
 </body>
 </html>
