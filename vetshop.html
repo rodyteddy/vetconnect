@@ -14,7 +14,7 @@ body { margin:0; font-family:Arial, sans-serif; background:#f7f9fc; }
 header { text-align:center; padding:20px; font-size:28px; color:#fff; background:#6c5ce7; }
 .shop-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; width:90%; max-width:1100px; margin:40px auto; }
 .product-card { background:#fff; border-radius:12px; padding:15px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-.product-card img { width:100%; height:180px; object-fit:contain; border-radius:10px; }
+.product-card img { width:100%; height:180px; object-fit:contain; border-radius:10px; background:#f5f5f5; }
 .product-card h3 { margin:15px 0 5px 0; font-size:20px; }
 .price { font-size:18px; font-weight:bold; color:#6c5ce7; margin-bottom:15px; }
 .btn { background:#6c5ce7; color:white; padding:10px 14px; text-decoration:none; border-radius:8px; cursor:pointer; transition:0.3s; border:none; }
@@ -37,10 +37,10 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 }
 #cartSidebar.active { right:0; }
 #cartSidebar h2 { margin-top:0; color:#1abc9c; text-align:center; }
-.cart-item { display:flex; justify-content:space-between; margin-bottom:10px; align-items:center; }
+.cart-item { display:flex; justify-content:space-between; margin-bottom:10px; align-items:center; padding:8px 0; border-bottom:1px solid #eee; }
 .cart-item span { font-weight:500; }
-.cart-total { font-size:18px; font-weight:bold; margin-top:15px; text-align:right; }
-.delete-btn { background:#e74c3c; border:none; color:white; padding:4px 8px; border-radius:5px; cursor:pointer; }
+.cart-total { font-size:18px; font-weight:bold; margin-top:15px; text-align:right; padding-top:10px; border-top:2px solid #1abc9c; }
+.delete-btn { background:#e74c3c; border:none; color:white; padding:6px 10px; border-radius:5px; cursor:pointer; }
 .delete-btn:hover { background:#c0392b; }
 #cartToggle {
   position: fixed;
@@ -55,6 +55,9 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
   z-index:1100;
 }
 #cartToggle:hover { background:#5a4bd6; }
+.empty-cart { text-align:center; color:#777; font-style:italic; padding:20px; }
+.close-cart { background:#95a5a6; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; margin-top:15px; width:100%; }
+.close-cart:hover { background:#7f8c8d; }
 </style>
 </head>
 <body>
@@ -78,45 +81,45 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 
 <div class="shop-container">
   <div class="product-card">
-    <img src="images/premiumdogfood.jpeg" alt="Premium Dog Food">
+    <img src="images/premiumdogfood.jpeg" alt="Premium Dog Food" onerror="this.src='https://via.placeholder.com/250x180/6c5ce7/ffffff?text=Dog+Food'">
     <h3>Premium Dog Food</h3>
-    <p class="price">19.99</p>
-    <button class="btn" data-name="Premium Dog Food" data-price="19.99">Add to Cart</button>
+    <p class="price">$19.99</p>
+    <button class="btn add-to-cart" data-name="Premium Dog Food" data-price="19.99">Add to Cart</button>
   </div>
 
   <div class="product-card">
-    <img src="images/healthycatfood.jpeg" alt="Healthy Cat Food">
+    <img src="images/healthycatfood.jpeg" alt="Healthy Cat Food" onerror="this.src='https://via.placeholder.com/250x180/6c5ce7/ffffff?text=Cat+Food'">
     <h3>Healthy Cat Food</h3>
-    <p class="price">14.99</p>
-    <button class="btn" data-name="Healthy Cat Food" data-price="14.99">Add to Cart</button>
+    <p class="price">$14.99</p>
+    <button class="btn add-to-cart" data-name="Healthy Cat Food" data-price="14.99">Add to Cart</button>
   </div>
 
   <div class="product-card">
-    <img src="images/durablepetleash.jpeg" alt="Durable Pet Leash">
+    <img src="images/durablepetleash.jpeg" alt="Durable Pet Leash" onerror="this.src='https://via.placeholder.com/250x180/6c5ce7/ffffff?text=Pet+Leash'">
     <h3>Durable Pet Leash</h3>
-    <p class="price">9.99</p>
-    <button class="btn" data-name="Durable Pet Leash" data-price="9.99">Add to Cart</button>
+    <p class="price">$9.99</p>
+    <button class="btn add-to-cart" data-name="Durable Pet Leash" data-price="9.99">Add to Cart</button>
   </div>
 
   <div class="product-card">
-    <img src="images/interactivepettoys.jpeg" alt="Interactive Pet Toys">
+    <img src="images/interactivepettoys.jpeg" alt="Interactive Pet Toys" onerror="this.src='https://via.placeholder.com/250x180/6c5ce7/ffffff?text=Pet+Toys'">
     <h3>Interactive Pet Toys</h3>
-    <p class="price">12.99</p>
-    <button class="btn" data-name="Interactive Pet Toys" data-price="12.99">Add to Cart</button>
+    <p class="price">$12.99</p>
+    <button class="btn add-to-cart" data-name="Interactive Pet Toys" data-price="12.99">Add to Cart</button>
   </div>
 
   <div class="product-card">
-    <img src="images/soothingpetshampoo.jpeg" alt="Soothing Pet Shampoo">
+    <img src="images/soothingpetshampoo.jpeg" alt="Soothing Pet Shampoo" onerror="this.src='https://via.placeholder.com/250x180/6c5ce7/ffffff?text=Pet+Shampoo'">
     <h3>Soothing Pet Shampoo</h3>
-    <p class="price">8.99</p>
-    <button class="btn" data-name="Soothing Pet Shampoo" data-price="8.99">Add to Cart</button>
+    <p class="price">$8.99</p>
+    <button class="btn add-to-cart" data-name="Soothing Pet Shampoo" data-price="8.99">Add to Cart</button>
   </div>
 
   <div class="product-card">
-    <img src="images/softpetbed.jpeg" alt="Soft Pet Bed">
+    <img src="images/softpetbed.jpeg" alt="Soft Pet Bed" onerror="this.src='https://via.placeholder.com/250x180/6c5ce7/ffffff?text=Pet+Bed'">
     <h3>Soft Pet Bed</h3>
-    <p class="price">25.99</p>
-    <button class="btn" data-name="Soft Pet Bed" data-price="25.99">Add to Cart</button>
+    <p class="price">$25.99</p>
+    <button class="btn add-to-cart" data-name="Soft Pet Bed" data-price="25.99">Add to Cart</button>
   </div>
 </div>
 
@@ -125,6 +128,7 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
   <h2>Your Cart</h2>
   <div id="cartItems"></div>
   <div class="cart-total" id="cartTotal"></div>
+  <button class="close-cart">Close Cart</button>
 </div>
 <div id="cartToggle">🛒 Cart</div>
 
@@ -134,52 +138,94 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const cart = [];
+  let cart = JSON.parse(localStorage.getItem('vetconnectCart')) || [];
   const cartSidebar = document.getElementById('cartSidebar');
   const cartToggle = document.getElementById('cartToggle');
   const cartItemsDiv = document.getElementById('cartItems');
   const cartTotalDiv = document.getElementById('cartTotal');
 
+  function saveCart() {
+    localStorage.setItem('vetconnectCart', JSON.stringify(cart));
+  }
+
   function renderCart() {
     cartItemsDiv.innerHTML = '';
     let total = 0;
-    if(cart.length === 0){
-      cartItemsDiv.innerHTML = '<p>No items in cart.</p>';
+    
+    if(cart.length === 0) {
+      cartItemsDiv.innerHTML = '<p class="empty-cart">No items in cart.</p>';
       cartTotalDiv.innerHTML = '';
       return;
     }
-    cart.forEach((item,index)=>{
+    
+    cart.forEach((item, index) => {
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = <span>${item.name} - $${item.price.toFixed(2)}</span> <button class="delete-btn" data-index="${index}">X</button>;
       cartItemsDiv.appendChild(div);
       total += item.price;
     });
+    
     cartTotalDiv.innerHTML = Total: $${total.toFixed(2)};
 
-    document.querySelectorAll('.delete-btn').forEach(btn=>{
-      btn.onclick = function(){
+    // Add event listeners to delete buttons
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
         const i = parseInt(this.getAttribute('data-index'));
-        cart.splice(i,1);
+        cart.splice(i, 1);
+        saveCart();
         renderCart();
-      }
+      });
     });
-
-    cartSidebar.classList.add('active');
   }
 
-  document.querySelectorAll('.btn').forEach(btn=>{
-    btn.onclick = function(){
+  // Add to cart functionality
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', function() {
       const name = this.getAttribute('data-name');
       const price = parseFloat(this.getAttribute('data-price'));
-      cart.push({name,price});
-      renderCart();
+      
+      // Check if item already exists in cart
+      const existingItem = cart.find(item => item.name === name);
+      if (!existingItem) {
+        cart.push({name, price});
+        saveCart();
+        renderCart();
+        cartSidebar.classList.add('active');
+        
+        // Visual feedback
+        const originalText = this.textContent;
+        this.textContent = 'Added!';
+        this.style.background = '#2ecc71';
+        setTimeout(() => {
+          this.textContent = originalText;
+          this.style.background = '';
+        }, 1000);
+      }
+    });
+  });
+
+  // Toggle cart sidebar
+  cartToggle.addEventListener('click', function() {
+    cartSidebar.classList.toggle('active');
+  });
+
+  // Close cart button
+  document.querySelector('.close-cart').addEventListener('click', function() {
+    cartSidebar.classList.remove('active');
+  });
+
+  // Close cart when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!cartSidebar.contains(event.target) && 
+        !cartToggle.contains(event.target) && 
+        cartSidebar.classList.contains('active')) {
+      cartSidebar.classList.remove('active');
     }
   });
 
-  cartToggle.onclick = function(){
-    cartSidebar.classList.toggle('active');
-  }
+  // Initial render
+  renderCart();
 });
 </script>
 </body>
