@@ -86,15 +86,18 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
   document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const name = btn.getAttribute('data-name');
       const price = parseFloat(btn.getAttribute('data-price'));
       cart.push({name, price});
       localStorage.setItem('cart', JSON.stringify(cart));
-      window.location.href = 'cart.html'; // Redirect to cart page
+
+      // Use a short delay to ensure localStorage is updated
+      setTimeout(() => {
+        window.location.href = 'cart.html'; 
+      }, 50);
     });
   });
 });
