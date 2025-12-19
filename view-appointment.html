@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>View Appointment</title>
+<title>View Appointments</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="navbar">…same navbar…</nav>
+<nav class="navbar">...FULL NAVBAR...</nav>
 
 <div class="container">
-<h2>Saved Appointments</h2>
+<h2>Appointments</h2>
 <ul id="list"></ul>
 </div>
 
 <script>
 let data = JSON.parse(localStorage.getItem("appointments")) || [];
 data.forEach(a=>{
-    list.innerHTML += <li>${a.name} | ${a.pet} | ${a.time}</li>;
+list.innerHTML += <li><strong>${a.name}</strong> | ${a.pet} | ${a.time}</li>;
 });
 </script>
 
