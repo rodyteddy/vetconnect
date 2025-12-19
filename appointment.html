@@ -6,7 +6,21 @@
 </head>
 <body>
 
-<nav class="navbar">...FULL NAVBAR SAME AS HOME...</nav>
+<nav class="navbar">
+  <div class="logo">VetConnect</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="appointment.html">Appointment</a></li>
+    <li><a href="view-appointment.html">View Appointment</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="connect.html">Connect</a></li>
+    <li><a href="vetshop.html">PetShop</a></li>
+  </ul>
+  <div class="auth-links">
+    <a href="login.html" class="login">Login</a>
+    <a href="logout.html" class="logout">Logout</a>
+  </div>
+</nav>
 
 <div class="container">
 <h2>Make an Appointment</h2>
@@ -16,8 +30,8 @@
 <input id="phone" placeholder="Phone">
 <input id="address" placeholder="Address">
 <select id="pet">
-<option>Dog</option>
-<option>Cat</option>
+  <option>Dog</option>
+  <option>Cat</option>
 </select>
 <input type="datetime-local" id="time">
 
@@ -26,17 +40,19 @@
 
 <script>
 function saveAppointment() {
-let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-appointments.push({
-name: name.value,
-email: email.value,
-phone: phone.value,
-address: address.value,
-pet: pet.value,
-time: time.value
-});
-localStorage.setItem("appointments", JSON.stringify(appointments));
-alert("Appointment successfully saved!");
+  let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+
+  appointments.push({
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+    address: address.value,
+    pet: pet.value,
+    time: time.value
+  });
+
+  localStorage.setItem("appointments", JSON.stringify(appointments));
+  alert("Appointment saved successfully!");
 }
 </script>
 
