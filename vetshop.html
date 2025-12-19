@@ -1,54 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>PetShop</title>
-    <link rel="stylesheet" href="styles.css">
+<title>PetShop</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo">VetConnect</div>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="appointment.html">Appointment</a></li>
-        <li><a href="view-appointment.html">View Appointment</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="connect.html">Connect</a></li>
-        <li><a href="vetshop.html">PetShop</a></li>
-    </ul>
-    <div class="auth-links">
-        <a href="login.html" class="login">Login</a>
-        <a href="logout.html" class="logout">Logout</a>
-    </div>
-</nav>
+<nav class="navbar">…same navbar…</nav>
 
-<h2 style="text-align:center;">Pet Shop 🐾</h2>
+<div class="container">
+<h2>Pet Shop</h2>
 
-<div style="text-align:center;">
-    <button onclick="addToCart('Dog Food',20)">Dog Food - $20</button>
-    <button onclick="addToCart('Cat Food',15)">Cat Food - $15</button>
-    <button onclick="addToCart('Shampoo',10)">Shampoo - $10</button>
+<div>
+<img src="images/premiumdogfood.jpeg" width="150">
+<button onclick="add('Dog Food',20)">Add $20</button>
 </div>
 
-<div style="max-width:400px; margin:30px auto; background:white; padding:20px;">
-    <h3>Cart</h3>
-    <ul id="cart"></ul>
-    <h4>Total: $<span id="total">0</span></h4>
+<div>
+<img src="images/healthycatfood.jpeg" width="150">
+<button onclick="add('Cat Food',15)">Add $15</button>
 </div>
 
-<footer>© 2025 VetConnect</footer>
+<ul id="cart"></ul>
+<h3>Total: $<span id="total">0</span></h3>
+</div>
 
 <script>
 let total = 0;
-function addToCart(name, price) {
-    const li = document.createElement("li");
-    li.textContent = name + " - $" + price;
-    document.getElementById("cart").appendChild(li);
-    total += price;
-    document.getElementById("total").textContent = total;
+function add(name,price){
+cart.innerHTML += <li>${name} - $${price}</li>;
+total += price;
+document.getElementById("total").innerText = total;
 }
 </script>
 
+<footer>© 2025 VetConnect</footer>
 </body>
 </html>
