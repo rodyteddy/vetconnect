@@ -32,9 +32,9 @@ let data = JSON.parse(localStorage.getItem("appointments")) || [];
 data.forEach(a => {
   list.innerHTML += `
   <li>
-    <strong>${a.name}</strong><br>
-    ${a.pet} | ${a.time}<br>
-    ${a.phone}
+    <strong>${a.name ? a.name : 'No Name'}</strong><br>
+    Pet: ${a.pet} | Time: ${a.time}<br>
+    Phone: ${a.phone}
   </li>`;
 });
 </script>
