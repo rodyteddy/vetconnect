@@ -2,143 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VetConnect - Pet Shop</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f7f9fc;
-            color: #2d3436;
-        }
-
-        header {
-            background: #6c5ce7;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 26px;
-            font-weight: bold;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        }
-
-        .page-title {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 32px;
-            font-weight: bold;
-            color: #2d3436;
-        }
-
-        .shop-container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            padding-bottom: 40px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.25s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .product-card h3 {
-            margin: 15px 0 5px;
-            font-size: 20px;
-        }
-
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #6c5ce7;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            background: #6c5ce7;
-            color: white;
-            padding: 10px 14px;
-            text-decoration: none;
-            border-radius: 8px;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #5a4bd6;
-        }
-    </style>
+    <title>PetShop</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>VetConnect Pet Shop</header>
-
-<h2 class="page-title">Choose the Best for Your Pet 🐾</h2>
-
-<div class="shop-container">
-
-    <div class="product-card">
-        <img src="images/premiumdogfood.jpeg" alt="Premium Dog Food">
-        <h3>Premium Dog Food</h3>
-        <p class="price">$19.99</p>
-        <a href="#" class="btn">Add to Cart</a>
+<nav class="navbar">
+    <div class="logo">VetConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="appointment.html">Appointment</a></li>
+        <li><a href="view-appointment.html">View Appointment</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="connect.html">Connect</a></li>
+        <li><a href="vetshop.html">PetShop</a></li>
+    </ul>
+    <div class="auth-links">
+        <a href="login.html" class="login">Login</a>
+        <a href="logout.html" class="logout">Logout</a>
     </div>
+</nav>
 
-    <div class="product-card">
-        <img src="images/healthycatfood.jpeg" alt="Healthy Cat Food">
-        <h3>Healthy Cat Food</h3>
-        <p class="price">$14.99</p>
-        <a href="#" class="btn">Add to Cart</a>
-    </div>
+<h2 style="text-align:center;">Pet Shop 🐾</h2>
 
-    <div class="product-card">
-        <img src="images/durablepetleash.jpeg" alt="Durable Pet Leash">
-        <h3>Durable Pet Leash</h3>
-        <p class="price">$9.99</p>
-        <a href="#" class="btn">Add to Cart</a>
-    </div>
-
-    <div class="product-card">
-        <img src="images/interactivepettoys.jpeg" alt="Interactive Pet Toys">
-        <h3>Interactive Pet Toys</h3>
-        <p class="price">$12.99</p>
-        <a href="#" class="btn">Add to Cart</a>
-    </div>
-
-    <div class="product-card">
-        <img src="images/soothingpetshampoo.jpeg" alt="Soothing Pet Shampoo">
-        <h3>Soothing Pet Shampoo</h3>
-        <p class="price">$8.99</p>
-        <a href="#" class="btn">Add to Cart</a>
-    </div>
-
-    <div class="product-card">
-        <img src="images/softpetbed.jpeg" alt="Soft Pet Bed">
-        <h3>Soft Pet Bed</h3>
-        <p class="price">$25.99</p>
-        <a href="#" class="btn">Add to Cart</a>
-    </div>
-
+<div style="text-align:center;">
+    <button onclick="addToCart('Dog Food',20)">Dog Food - $20</button>
+    <button onclick="addToCart('Cat Food',15)">Cat Food - $15</button>
+    <button onclick="addToCart('Shampoo',10)">Shampoo - $10</button>
 </div>
+
+<div style="max-width:400px; margin:30px auto; background:white; padding:20px;">
+    <h3>Cart</h3>
+    <ul id="cart"></ul>
+    <h4>Total: $<span id="total">0</span></h4>
+</div>
+
+<footer>© 2025 VetConnect</footer>
+
+<script>
+let total = 0;
+function addToCart(name, price) {
+    const li = document.createElement("li");
+    li.textContent = name + " - $" + price;
+    document.getElementById("cart").appendChild(li);
+    total += price;
+    document.getElementById("total").textContent = total;
+}
+</script>
 
 </body>
 </html>
