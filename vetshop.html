@@ -134,8 +134,7 @@ footer { text-align:center; padding:15px; background:#1abc9c; color:white; margi
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  let cart = [];
-
+  const cart = [];
   const cartSidebar = document.getElementById('cartSidebar');
   const cartToggle = document.getElementById('cartToggle');
   const cartItemsDiv = document.getElementById('cartItems');
@@ -144,49 +143,43 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderCart() {
     cartItemsDiv.innerHTML = '';
     let total = 0;
-
     if(cart.length === 0){
       cartItemsDiv.innerHTML = '<p>No items in cart.</p>';
       cartTotalDiv.innerHTML = '';
       return;
     }
-
-    cart.forEach((item, index) => {
+    cart.forEach((item,index)=>{
       const div = document.createElement('div');
       div.className = 'cart-item';
-      div.innerHTML = `
-        <span>${item.name} - $${item.price.toFixed(2)}</span>
-        <button class="delete-btn" data-index="${index}">X</button>
-      `;
-      total += item.price;
+      div.innerHTML = <span>${item.name} - $${item.price.toFixed(2)}</span> <button class="delete-btn" data-index="${index}">X</button>;
       cartItemsDiv.appendChild(div);
+      total += item.price;
     });
-
     cartTotalDiv.innerHTML = Total: $${total.toFixed(2)};
 
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.addEventListener('click', function(){
+    document.querySelectorAll('.delete-btn').forEach(btn=>{
+      btn.onclick = function(){
         const i = parseInt(this.getAttribute('data-index'));
-        cart.splice(i, 1);
+        cart.splice(i,1);
         renderCart();
-      });
+      }
     });
 
     cartSidebar.classList.add('active');
   }
 
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function() {
+  document.querySelectorAll('.btn').forEach(btn=>{
+    btn.onclick = function(){
       const name = this.getAttribute('data-name');
       const price = parseFloat(this.getAttribute('data-price'));
-      cart.push({name, price});
+      cart.push({name,price});
       renderCart();
-    });
+    }
   });
 
-  cartToggle.addEventListener('click', () => {
+  cartToggle.onclick = function(){
     cartSidebar.classList.toggle('active');
-  });
+  }
 });
 </script>
 </body>
