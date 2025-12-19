@@ -6,34 +6,60 @@
 </head>
 <body>
 
-<nav class="navbar">...FULL NAVBAR...</nav>
+<nav class="navbar">
+  <div class="logo">VetConnect</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="appointment.html">Appointment</a></li>
+    <li><a href="view-appointment.html">View Appointment</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="connect.html">Connect</a></li>
+    <li><a href="vetshop.html">PetShop</a></li>
+  </ul>
+  <div class="auth-links">
+    <a href="login.html" class="login">Login</a>
+    <a href="logout.html" class="logout">Logout</a>
+  </div>
+</nav>
 
 <div class="container">
 <h2>Pet Shop</h2>
 
 <div class="cards">
+
 <div class="card shop-item">
 <img src="images/premiumdogfood.jpg">
-<button onclick="add('Premium Dog Food',25)">Add $25</button>
+<p>Premium Dog Food - $25</p>
+<button onclick="addToCart('Premium Dog Food',25)">Add to Cart</button>
 </div>
 
 <div class="card shop-item">
 <img src="images/healthycatfood.jpg">
-<button onclick="add('Healthy Cat Food',20)">Add $20</button>
+<p>Healthy Cat Food - $20</p>
+<button onclick="addToCart('Healthy Cat Food',20)">Add to Cart</button>
 </div>
+
+<div class="card shop-item">
+<img src="images/interactivepettoy.jpg">
+<p>Interactive Pet Toy - $12</p>
+<button onclick="addToCart('Interactive Pet Toy',12)">Add to Cart</button>
+</div>
+
 </div>
 
 <h3>Cart</h3>
 <ul id="cart"></ul>
-<p>Total: $<span id="total">0</span></p>
+<p><strong>Total: $<span id="total">0</span></strong></p>
 </div>
 
 <script>
 let total = 0;
-function add(name, price) {
-cart.innerHTML += <li>${name} - $${price}</li>;
-total += price;
-document.getElementById("total").innerText = total;
+function addToCart(name, price) {
+  const li = document.createElement("li");
+  li.textContent = ${name} - $${price};
+  document.getElementById("cart").appendChild(li);
+  total += price;
+  document.getElementById("total").innerText = total;
 }
 </script>
 
